@@ -1,0 +1,14 @@
+header{
+    background-color: #0082D1;
+    height: 60px;
+    display:block;
+}
+.text-header{
+    text-align: center;
+    font-size: 34pt;
+}
+body{
+    margin: 10px;
+    background: #faffff;
+    font-family: Consolas, sans-serif;
+}
