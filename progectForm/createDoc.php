@@ -5,41 +5,17 @@
  * Date: 01.10.2015
  * Time: 15:05
  */
-?>
-<!DOCTYPE html>
-<html>
-<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
-<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 
-<!-- Optional theme -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
-
-<!-- Latest compiled and minified JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-<head>
-    <meta charset = "UTF-8">
-    <title>Viev all</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
-</head>
-<?php
-include "functions.php";
+include_once "functions.php";
 $name = $_POST['name'];
-$job = $_POST['job'];
 $email = $_POST['email'];
-$phone = $_POST['tel'];
 $sex = $_POST['sex'];
-$dateIn = date('Y-m-d h:i:s');
+$dateIn = date('Y-m-d H:i:s');
 $about = $_POST['about'];
+$job = $_POST['job'];
+sqlQueryInsert("INSERT INTO names (name, email, sex, date, about, job_id) VALUES('$name', '$email', '$sex', '$dateIn', '$about', $job)");
 
-$link = mysqli_connect("localhost", "root", "", "resumedb");
-
-mysqli_query($link, "INSERT INTO names (name, job, email, phone, sex, date, about) VALUES('$name', '$job', '$email', $phone, '$sex', '$dateIn','$about')");
-
-vievSQLtable($link);
-
-mysqli_close($link);
+header('Location: ' . $_SERVER['HTTP_REFERER']);
 
 
 
