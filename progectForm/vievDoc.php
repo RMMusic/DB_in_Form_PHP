@@ -1,21 +1,4 @@
-<!DOCTYPE html>
-<html>
-<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
-<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-
-<!-- Optional theme -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
-
-<!-- Latest compiled and minified JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-<head>
-    <meta charset = "UTF-8">
-    <title>Resume</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <?php include_once('functions.php'); ?>
-</head>
+<?php include_once('header.php'); ?>
 <?php
 /**
  * Created by PhpStorm.
@@ -23,17 +6,32 @@
  * Date: 07.10.2015
  * Time: 14:06
  */
+?>
 
-$selectdb = sqlQuerySelect('SELECT * FROM names JOIN jobs ON names.job_id = jobs.id');
+<!--<form action="#" method="get">-->
+<!--    <div class="row">-->
+<!--        <div class="col-lg-1 col-lg-offset-2">-->
+<!--            <input type="button" class="btn btn-warning btn-sm" value="Edit">-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    <div class="row">-->
+<!--        <div class="col-lg-1 col-lg-offset-2">-->
+<!--            <input type="button" class="btn btn-danger btn-sm" value="Delete">-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</form>-->
+
+<?php
+$selectdb = sqlQuerySelect('SELECT n.id, n.name, n.email, n.sex, n.date, n.about, j.workplace FROM names AS n JOIN jobs AS j ON n.job_id = j.id');
 echo '<div class="table-responsive"><table class="table">';
 foreach($selectdb as $value){
-        echo '<tr class="success"><td>' . $value['name'] . '</td><td>' . $value['email'] . '</td><td>' . $value['sex'] . '</td><td>' . $value['date'] . '</td><td>' . $value['about'] . '</td><td>'  . $value['workplace'] . '</td></tr>';
+        echo '<tr class="success"><td>' . $value['name'] . '</td><td>' . $value['email'] . '</td><td>' . $value['sex'] . '</td><td>' . $value['date'] . '</td><td>' . $value['about'] . '</td><td>'  . $value['workplace'] . '</td><td><a href="index.php?id=' . $value['id'] . '" class="btn btn-warning btn-sm" >Edit</a></td><td><a href="#?id=' . $value['id'] . '" class="btn btn-danger btn-sm" >Delete</a></td></tr>';
     }
 echo '</table></div>';
 
-$analituka = sqlQuerySelect('SELECT name FROM names JOIN jobs ON names.job_id = jobs.id WHERE names.sex="male" AND jobs.workplace="Аналітика"');
-var_dump($analituka);
 
+//$analituka = sqlQuerySelect('SELECT name FROM names JOIN jobs ON names.job_id = jobs.id WHERE names.sex="male" AND jobs.workplace="Аналітика"');
+//var_dump($analituka);
 //SELECT column_name(s)
 //FROM table1
 //RIGHT JOIN table2
@@ -42,3 +40,5 @@ var_dump($analituka);
 //$selectdb = sqlQuerySelect('SELECT workplace FROM names RIGHT JOIN jobs ON names.job_id = jobs.id WHERE job_id IS NULL');
 //
 //var_dump($selectdb);
+?>
+<?php include_once('footer.php'); ?>
