@@ -19,7 +19,7 @@
 <?php
 if (isset($_GET['id'])){
     $data = sqlQuerySelect('SELECT * FROM names WHERE id='.$_GET['id']);
-//    var_dump($data);
+    var_dump($data);
     echo (isset($data['name']))?$data['name']:'';
 }
 ?>
@@ -76,8 +76,11 @@ if (isset($_GET['id'])){
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2">
                 <label for="sexid">Sex</label><br>
-                <input type="radio" name="sex" checked="checked" value="male" id="sexid">Male
-                <input type="radio" name="sex" value="female" id="sexid">Female
+                <?php $male = '';
+                $famale = ''?>
+                <?php (isset($data[0]["sex"]) && $data[0]["sex"] == 'famale')? $female = 'checked="checked"':$male = 'checked="checked"'; ?>
+                <input type="radio" name="sex" <?php echo $male ?> value="male" id="sexid">Male
+                <input type="radio" name="sex" <?php echo $female ?> value="female" id="sexid">Female
             </div>
         </div>
     <p>
