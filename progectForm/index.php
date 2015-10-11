@@ -20,7 +20,7 @@
 if (isset($_GET['id'])){
     $data = sqlQuerySelect('SELECT * FROM names WHERE id='.$_GET['id']);
     var_dump($data);
-    echo (isset($data['name']))?$data['name']:'';
+    echo '<div class="you-edit">You edit - ' . ($data[0]['name']) . '</div><br>';
 }
 ?>
 <div>
@@ -63,10 +63,11 @@ if (isset($_GET['id'])){
                 <?php
                     $row = sqlQuerySelect("SELECT * FROM jobs");
                 ?>
-                <select name="job" class="form-control input-lg" id="selectjob">
+                <select name="job" required="required" class="form-control input-lg" id="selectjob">
                 <?php
-                    foreach($row as $value){
-                        echo '<option value=' . $value['id'] . '>' . $value['workplace'] . '</option>';
+                    foreach($row as $key => $value){
+                        isset($data) && $data[0]['job_id'] == $row[$key]['id']?$selectForEdit = 'selected="selected"':$selectForEdit = "";
+                        echo '<option ' . $selectForEdit . ' value=' . $value['id'] . '>' . $value['workplace'] . ' ' .$key . '</option>';
                     }
                 ?>
                 </select>
@@ -77,13 +78,15 @@ if (isset($_GET['id'])){
             <div class="col-lg-8 col-lg-offset-2">
                 <label for="sexid">Sex</label><br>
                 <?php $male = '';
-                $famale = ''?>
-                <?php (isset($data[0]["sex"]) && $data[0]["sex"] == 'famale')? $female = 'checked="checked"':$male = 'checked="checked"'; ?>
+                $famale = '';
+                (isset($data[0]["sex"]) && $data[0]["sex"] == 'female')? $female = 'checked="checked"':$male = 'checked="checked"'; ?>
                 <input type="radio" name="sex" <?php echo $male ?> value="male" id="sexid">Male
                 <input type="radio" name="sex" <?php echo $female ?> value="female" id="sexid">Female
             </div>
         </div>
     <p>
+<!--        <input type="hidden" name="edition" value="--><?php //echo (isset($data))?$data[0]["id"]:''; ?><!--">-->
+        <input type="hidden" <?php echo (isset($data))?'name="edition" value="' . $data[0]["id"]:''; ?>">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2">
                 <input type="reset" class="btn btn-danger btn-lg" value="Reset">

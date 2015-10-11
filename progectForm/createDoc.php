@@ -7,15 +7,18 @@
  */
 
 include_once "functions.php";
-$name = $_POST['name'];
-$email = $_POST['email'];
-$sex = $_POST['sex'];
-$dateIn = date('Y-m-d H:i:s');
-$about = $_POST['about'];
-$job = $_POST['job'];
-sqlQueryInsert("INSERT INTO names (name, email, sex, date, about, job_id) VALUES('$name', '$email', '$sex', '$dateIn', '$about', $job)");
 
-header('Location: ' . $_SERVER['HTTP_REFERER']);
+var_dump($_POST);
+echo (isset($_POST["edition"]))?111:'';
+
+//$name = $_POST['name'];
+//$email = $_POST['email'];
+//$sex = $_POST['sex'];
+//$dateIn = date('Y-m-d H:i:s');
+//$about = $_POST['about'];
+//$job = $_POST['job'];
+//sqlQueryInsert("INSERT INTO names (name, email, sex, date, about, job_id) VALUES('$name', '$email', '$sex', '$dateIn', '$about', $job)");
+//header('Location: ' . $_SERVER['HTTP_REFERER']);
 
 
 

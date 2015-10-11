@@ -9,10 +9,14 @@ header{
 }
 body{
     margin: 10px;
-    background: #faffff;
+    background: #c3cac6;
     font-family: Consolas, sans-serif;
 }
-
+.you-edit{
+    text-align: center;
+    font-size: 24pt;
+    color: #dc7153;
+}
 
 
 
