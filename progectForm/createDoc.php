@@ -8,67 +8,26 @@
 
 include_once "functions.php";
 
-var_dump($_POST);
-echo (isset($_POST["edition"]))?111:'';
+//var_dump($_POST);
+//var_dump($_GET);
 
-//$name = $_POST['name'];
-//$email = $_POST['email'];
-//$sex = $_POST['sex'];
-//$dateIn = date('Y-m-d H:i:s');
-//$about = $_POST['about'];
-//$job = $_POST['job'];
-//sqlQueryInsert("INSERT INTO names (name, email, sex, date, about, job_id) VALUES('$name', '$email', '$sex', '$dateIn', '$about', $job)");
-//header('Location: ' . $_SERVER['HTTP_REFERER']);
+$name = $_POST['name'];
+$email = $_POST['email'];
+$sex = $_POST['sex'];
+$about = $_POST['about'];
+$jobID = (int)$_POST['job'];
+$dateIn = date('Y-m-d H:i:s');
+$edition = (int)$_POST['edition'];
+$delete = (int)$_GET['id'];
 
+if (isset($_POST['edition'])){
+    sqlQueryInsert("UPDATE names SET name='$name', email='$email', sex='$sex', about='$about', job_id=$jobID WHERE id=$edition");
+}
+elseif (isset($_GET['id'])){
+    sqlQueryInsert("DELETE FROM names WHERE id=$delete");
+}
+else {
+    sqlQueryInsert("INSERT INTO names (name, email, sex, date, about, job_id) VALUES('$name', '$email', '$sex', '$dateIn', '$about', $jobID)");
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//$data = [];
-//$moduleNum = 0;
-//$student_num = 0;
-//foreach($datas as $d){
-//
-//    foreach ($d['data']->getContent() as $module) {
-//
-//        foreach ($module->students->student as $student) {
-//
-//            if ($moduleNum==0) {
-//                $data[$student_num] = [(string)$student->id, (string)$student->fio, (string)$student->credits_cur];
-//            }else{
-//                foreach($module->students->student as $findRepeate){
-//                    if($findRepeate->id == $student->id){
-//                        $data[$student_num][] = (string)$findRepeate->credits_cur;
-//                    }
-//                }
-//            }
-//            $student_num++;
-//        }
-//    }
-//    $student_num = 0;
-//    $moduleNum++;
-//}
-//
-//return $data;
+header('Location: ' . $_SERVER['HTTP_REFERER']);

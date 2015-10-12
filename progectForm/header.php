@@ -61,8 +61,8 @@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Спадне меню <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
-                        <li><a href="/DB_in_Form_PHP-/progectForm/index.php">Головна</a></li>
-                        <li><a href="/DB_in_Form_PHP-/progectForm/vievDoc.php">Перегляд</a></li>
+                        <li><a href="/DB_in_Form_PHP/progectForm/index.php">Головна</a></li>
+                        <li><a href="/DB_in_Form_PHP/progectForm/vievDoc.php">Перегляд</a></li>
                         <!--            <li><a href="#">Тут ще щось</a></li>-->
                         <!--            <li class="divider"></li>-->
                         <!--            <li><a href="#">Відокремлений лінк</a></li>-->
