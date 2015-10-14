@@ -98,5 +98,19 @@ if (isset($_GET['id'])){
                 ?>
             </div>
         </div>
-    </form>
+        </form>
+        <br><br>
+        <form action="createDoc.php" method="post">
+            <div class="row">
+            <div class="col-lg-1 col-lg-offset-2">
+                <label for="newjob">Enter your job</label>
+            </div>
+            <div class="col-lg-3">
+                <input type="text" class="form-control input-lg" name="newjob" required="required" placeholder="job" id="newjob">
+            </div>
+            <div class="col-lg-2">
+                <input type="submit" class="btn btn-primary btn-lg" value="Enter job">
+            </div>
+            </div>
+        </form>
 <?php include_once('footer.php'); ?>
