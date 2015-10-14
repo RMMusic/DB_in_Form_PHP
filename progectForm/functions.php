@@ -20,18 +20,21 @@ function sqlQueryInsert($sqlQuery){
 function sqlQuerySelect($sqlQuery){
     $connect = sqlConnect();
     $result = mysqli_query($connect, $sqlQuery);
-//    var_dump($result);
     $data =  mysqli_fetch_all($result, MYSQLI_ASSOC);
     mysqli_close($connect);
     return $data;
 }
 
-//function vievSQLtableAll($dbConnect, $where=">0"){
-//    $result = mysqli_query($dbConnect, "SELECT * FROM names WHERE id$where");
-//    $row = mysqli_fetch_all($result, MYSQLI_ASSOC);
-//    echo '<div class="table-responsive"><table class="table">';
-//    foreach($row as $value){
-//        echo '<tr class="success"><td>' . $value['name'] . '</td><td>' . $value['email'] . '</td><td>' . $value['sex'] . '</td><td>' . $value['date'] . '</td><td>' . $value['about'] . '</td></tr>';
-//    }
-//    echo '</table></div>';
-//}
+/**
+ * Low Validation
+ *
+ * @param string $value
+ * @return string
+ */
+function clean($value = "") {
+    $value = trim($value); //Remove characters from both sides of a string - пробіли по краях
+    $value = stripslashes($value); //Remove the backslash - екрани
+    $value = strip_tags($value); //Strip the string from HTML, PHP tags - теги
+    $value = htmlspecialchars($value); //Convert the predefined characters - не зрозумів
+    return $value;
+}

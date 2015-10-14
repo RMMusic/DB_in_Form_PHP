@@ -40,15 +40,6 @@ if (isset($_GET['id'])){
                 <input type="email" class="form-control input-lg" name="email" required="required" placeholder="email" id="emailid" value="<?php echo (isset($data)) ? $data[0]["email"] : ''; ?>">
             </div>
         </div>
-<!--    <p>-->
-<!--        <div class="row">-->
-<!--            <div class="col-lg-4 col-lg-offset-2">-->
-<!--                <input type="email" class="form-control input-lg" name="email" required="required" placeholder="email">-->
-<!--            </div>-->
-<!--            <div class="col-lg-4">-->
-<!--                <input type="tel" class="form-control input-lg" name="tel" placeholder="Phone number">-->
-<!--            </div>-->
-<!--        </div>-->
     <p>
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2">
@@ -81,7 +72,6 @@ if (isset($_GET['id'])){
             </div>
         </div>
     <p>
-<!--        <input type="hidden" name="edition" value="--><?php //echo (isset($data))?$data[0]["id"]:''; ?><!--">-->
         <input type="hidden" <?php echo (isset($data))?'name="edition" value="' . $data[0]["id"]:''; ?>">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2">
@@ -106,7 +96,7 @@ if (isset($_GET['id'])){
                 <label for="newjob">Enter your job</label>
             </div>
             <div class="col-lg-3">
-                <input type="text" class="form-control input-lg" name="newjob" required="required" placeholder="job" id="newjob">
+                <input type="text" class="form-control input-lg" name="newjob" required="required" placeholder="Enter new job" id="newjob">
             </div>
             <div class="col-lg-2">
                 <input type="submit" class="btn btn-primary btn-lg" value="Enter job">
